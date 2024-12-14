@@ -1,3 +1,4 @@
+/* المتغيرات الأساسية */
 :root {
     --primary-color: #f7fafc;
     --secondary-color: #e2e8f0;
@@ -8,6 +9,7 @@
     --border-color: #4a5568;
 }
 
+/* إعادة تعيين الأنماط */
 * {
     margin: 0;
     padding: 0;
@@ -16,13 +18,15 @@
     transition: all 0.3s ease;
 }
 
+/* أنماط عامة */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Navigation Styles */
+/* شريط القائمة */
 nav {
     position: fixed;
     top: 0;
@@ -35,6 +39,17 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* زر القائمة للموبايل */
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .nav-links {
@@ -63,7 +78,7 @@ nav {
     cursor: pointer;
 }
 
-/* Header Styles */
+/* رأس الصفحة */
 header {
     background: linear-gradient(135deg, var(--card-bg), var(--bg-color));
     color: white;
@@ -91,7 +106,7 @@ header {
     50% { transform: translateY(-10px); }
 }
 
-/* Container and Section Styles */
+/* المحتوى الرئيسي */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,7 +139,7 @@ header {
     box-shadow: 0 8px 12px rgba(0,0,0,0.15);
 }
 
-/* Contact Info Styles */
+/* معلومات التواصل */
 .contact-info {
     display: flex;
     justify-content: center;
@@ -151,72 +166,91 @@ header {
     transform: translateY(-2px);
 }
 
-/* Skills Section Styles */
+/* قسم المهارات */
 .skills {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
 }
 
 .skill-item {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 10px;
+    background: linear-gradient(145deg, var(--card-bg), var(--bg-color));
+    padding: 1.8rem;
+    border-radius: 15px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: var(--accent-color);
 }
 
 .skill-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
     color: var(--accent-color);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(99, 179, 237, 0.3));
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1);
+    color: white;
+    filter: drop-shadow(0 0 12px rgba(99, 179, 237, 0.6));
 }
 
 .skill-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.skill-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.skill-item:hover .skill-title::after {
+    width: 50%;
 }
 
 .skill-description {
-    display: none;
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    height: 0;
+    opacity: 0;
+    margin-top: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
     text-align: justify;
 }
 
 .skill-item.active .skill-description {
-    display: block;
-}
-
-.skill-item::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--accent-color), #4fd1c5);
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.skill-item:hover::before {
+    height: auto;
     opacity: 1;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Projects Section Styles */
+/* قسم المشاريع */
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -229,15 +263,13 @@ header {
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
 }
 
-/* Scroll Progress Bar */
+/* شريط التقدم */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -249,7 +281,7 @@ header {
     transition: width 0.3s ease;
 }
 
-/* Modal Styles */
+/* نافذة الإعدادات */
 .modal {
     display: none;
     position: fixed;
@@ -280,28 +312,135 @@ header {
     cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
+.close:hover {
     color: var(--accent-color);
 }
 
-/* Responsive Design */
+/* نموذج الاتصال */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.1);
+    color: var(--text-color);
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* التجاوب مع الشاشات */
 @media (max-width: 768px) {
+    nav {
+        padding: 0.5rem;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
     .nav-links {
+        display: none;
+        width: 100%;
+        padding: 1rem 0;
+        background: var(--card-bg);
+        position: absolute;
+        top: 100%;
+        right: 0;
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
     }
-    
+
+    .nav-links.show {
+        display: flex;
+    }
+
     header {
         padding: 6rem 1rem 3rem;
     }
 
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .section {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
     .contact-info {
         flex-direction: column;
-        align-items: center;
+        gap: 1rem;
     }
-    
-    .container {
+
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 0.3rem;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    header {
+        padding: 5rem 0.5rem 2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .skill-item {
         padding: 1rem;
     }
 }

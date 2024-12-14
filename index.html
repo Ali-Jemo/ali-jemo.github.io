@@ -15,6 +15,9 @@
 
     <!-- القائمة العلوية -->
     <nav>
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-links">
             <li><a href="#" onclick="showSection('profile')">الملف الشخصي</a></li>
             <li><a href="#" onclick="showSection('skills')">المهارات</a></li>
@@ -70,40 +73,26 @@
                     <h3 class="skill-title">إدارة الوقت والتنظيم</h3>
                     <p class="skill-description">طوّرت مهارات إدارة الوقت بفعالية من خلال تنظيم وقتك بين الدراسة والأنشطة الأخرى. باستخدام الأدوات الذكية، أصبحت قادرًا على التخطيط للمراجعات والامتحانات بشكل منظم.</p>
                 </div>
-                
+
                 <!-- التفكير النقدي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-brain skill-icon"></i>
                     <h3 class="skill-title">التفكير النقدي والتحليل</h3>
-                    <p class="skill-description">بفضل الإجابة على الأسئلة المعقدة في مختلف المجالات، أصبحت أكثر قدرة على التفكير النقدي والتحليل المنطقي، وهي مهارة أساسية في المجال الأكاديمي والمهني.</p>
+                    <p class="skill-description">بفضل الإجابة على الأسئلة المعقدة في مختلف المجالات، أصبحت أكثر قدرة على التفكير النقدي والتحليل المنطقي.</p>
                 </div>
 
                 <!-- التواصل الفعال -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-comments skill-icon"></i>
                     <h3 class="skill-title">التواصل الفعّال</h3>
-                    <p class="skill-description">طوّرت مهارات التواصل بشكل دقيق وواضح، مما يعزز قدرتي على العمل الجماعي والتفاعل مع الآخرين في مختلف البيئات.</p>
+                    <p class="skill-description">طوّرت مهارات التواصل بشكل دقيق وواضح، مما يعزز قدرتي على العمل الجماعي والتفاعل مع الآخرين.</p>
                 </div>
 
                 <!-- العمل الجماعي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-users skill-icon"></i>
                     <h3 class="skill-title">العمل ضمن فريق</h3>
-                    <p class="skill-description">تعزيز القدرة على العمل ضمن فريق من خلال التعاون المستمر والتواصل الفعال مع مختلف الأشخاص والأنظمة.</p>
-                </div>
-
-                <!-- التعلم الذاتي -->
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-book-reader skill-icon"></i>
-                    <h3 class="skill-title">التعلم الذاتي</h3>
-                    <p class="skill-description">تطوير مهارات التعلم المستقل من خلال استخدام مختلف المصادر والأدوات التعليمية.</p>
-                </div>
-
-                <!-- حل المشكلات -->
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-lightbulb skill-icon"></i>
-                    <h3 class="skill-title">حل المشكلات</h3>
-                    <p class="skill-description">القدرة على تحليل المشكلات وإيجاد حلول مبتكرة باستخدام المنطق والتفكير النقدي.</p>
+                    <p class="skill-description">تعزيز القدرة على العمل ضمن فريق من خلال التعاون المستمر والتواصل الفعال.</p>
                 </div>
 
                 <!-- التقنيات الحديثة -->
@@ -126,16 +115,13 @@
         <section id="projects" class="section">
             <h2>المشاريع</h2>
             <div class="projects">
-                <!-- مشروع التطبيق الدراسي -->
                 <div class="project-card">
-                    <h3>التطبيق الدراسي MAUI</h3>
-                    <p>تطبيق شامل للطلاب يحتوي على المناهج الدراسية والمعلومات التفصيلية عن الكلية والأقسام. تم تطويره باستخدام C# و MAUI للعمل على مختلف المنصات.</p>
+                    <h3>التطبيق الدراسي C# MAUI</h3>
+                    <p>تطبيق شامل للطلاب يحتوي على المناهج الدراسية والمعلومات التفصيلية عن الكلية والأقسام.</p>
                 </div>
-
-                <!-- مشروع الموقع -->
                 <div class="project-card">
                     <h3>موقع تفاعلي ذكي</h3>
-                    <p>منصة تعليمية تفاعلية تم تطويرها باستخدام تقنيات الذكاء الاصطناعي لتوفير تجربة تعلم مخصصة للمستخدمين.</p>
+                    <p>منصة تعليمية تفاعلية تم تطويرها باستخدام تقنيات الذكاء الاصطناعي.</p>
                 </div>
             </div>
         </section>
@@ -199,9 +185,9 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- سكربت JavaScript -->
     <script>
-        // تفعيل الأقسام
+        // تبديل الأقسام
         function showSection(sectionId) {
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
@@ -209,11 +195,11 @@
             document.getElementById(sectionId).classList.add('active');
         }
 
-        // تفعيل وصف المهارات
+        // تبديل وصف المهارات
         function toggleSkillDescription(skillItem) {
             const wasActive = skillItem.classList.contains('active');
             
-            // إغلاق جميع المهارات المفتوحة
+            // إغلاق كل المهارات المفتوحة
             document.querySelectorAll('.skill-item').forEach(item => {
                 item.classList.remove('active');
             });
@@ -226,12 +212,12 @@
                     block: 'center' 
                 });
             }
+        }
 
-            // تأثير حركي عند النقر
-            skillItem.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                skillItem.style.transform = '';
-            }, 150);
+        // تبديل القائمة للموبايل
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
         }
 
         // شريط التقدم
@@ -242,7 +228,7 @@
             scrollProgress.style.width = `${progress}%`;
         });
 
-        // وظائف نافذة الإعدادات
+        // نافذة الإعدادات
         function openSettings() {
             document.getElementById('settingsModal').style.display = 'block';
         }
@@ -251,11 +237,35 @@
             document.getElementById('settingsModal').style.display = 'none';
         }
 
-        // معالجة نموذج الإعدادات
+        // معالجة النماذج
         document.getElementById('settingsForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('محاولة تسجيل الدخول');
             closeSettings();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال رسالتك بنجاح!');
+            this.reset();
+        });
+
+        // إغلاق القائمة عند النقر على الروابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('show');
+            });
+        });
+
+        // إغلاق القائمة عند التمرير
+        window.addEventListener('scroll', () => {
+            document.querySelector('.nav-links').classList.remove('show');
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                document.querySelector('.nav-links').classList.remove('show');
+            }
         });
 
         // إغلاق النافذة المنبثقة عند النقر خارجها
@@ -264,29 +274,6 @@
                 closeSettings();
             }
         }
-
-        // تفعيل تأثيرات التحويم للمهارات
-        document.addEventListener('DOMContentLoaded', () => {
-            const skillItems = document.querySelectorAll('.skill-item');
-            
-            skillItems.forEach(item => {
-                // تأثير التحويم
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // معالجة نموذج الاتصال
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('تم إرسال رسالتك بنجاح!');
-                this.reset();
-            });
-        });
     </script>
 </body>
 </html>
