@@ -4,312 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>علي جيمو - السيرة الذاتية</title>
+    <!-- التنسيقات -->
+    <link rel="stylesheet" href="style.css">
+    <!-- مكتبة الأيقونات -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #f7fafc;
-            --secondary-color: #e2e8f0;
-            --accent-color: #63b3ed;
-            --bg-color: #1a202c;
-            --card-bg: #2d3748;
-            --text-color: #f7fafc;
-            --border-color: #4a5568;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            background: rgba(45, 55, 72, 0.95);
-            padding: 1rem;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a, .settings-btn {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover, .settings-btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .settings-btn {
-            background: var(--accent-color);
-            border: none;
-            cursor: pointer;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--card-bg), var(--bg-color));
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 1rem auto;
-            display: block;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transform: translateY(0);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .skill-item {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .skill-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-description {
-            display: none;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            text-align: justify;
-        }
-
-        .skill-item.active .skill-description {
-            display: block;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--accent-color), #4fd1c5);
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-item:hover::before {
-            opacity: 1;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 4px;
-            background-color: var(--accent-color);
-            z-index: 1001;
-            transition: width 0.3s ease;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            float: left;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: var(--accent-color);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            header {
-                padding: 6rem 1rem 3rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- شريط التقدم -->
     <div class="scroll-progress"></div>
 
+    <!-- القائمة العلوية -->
     <nav>
         <ul class="nav-links">
             <li><a href="#" onclick="showSection('profile')">الملف الشخصي</a></li>
@@ -318,9 +22,12 @@
             <li><a href="#" onclick="showSection('experience')">الخبرات</a></li>
             <li><a href="#" onclick="showSection('contact')">الاتصال</a></li>
         </ul>
-        <button class="settings-btn" onclick="openSettings()"><i class="fas fa-cog"></i> الإعدادات</button>
+        <button class="settings-btn" onclick="openSettings()">
+            <i class="fas fa-cog"></i> الإعدادات
+        </button>
     </nav>
 
+    <!-- رأس الصفحة -->
     <header>
         <img src="profile-img.jpg" alt="علي جيمو" class="profile-img">
         <h1>علي جيمو</h1>
@@ -330,11 +37,11 @@
                 <i class="fas fa-phone"></i>
                 07767986205
             </a>
-            <a href="https://www.facebook.com/ali.jemo.77?mibextid=ZbWKwL" target="_blank" class="contact-item">
+            <a href="https://www.facebook.com/ali.jemo.77" target="_blank" class="contact-item">
                 <i class="fab fa-facebook"></i>
                 فيسبوك
             </a>
-            <a href="https://www.instagram.com/a.j1_6/profilecard/?igsh=czlqY2Zhd3FhZnhn" target="_blank" class="contact-item">
+            <a href="https://www.instagram.com/a.j1_6/" target="_blank" class="contact-item">
                 <i class="fab fa-instagram"></i>
                 إنستغرام
             </a>
@@ -345,127 +52,126 @@
         </div>
     </header>
 
+    <!-- المحتوى الرئيسي -->
     <div class="container">
+        <!-- قسم الملف الشخصي -->
         <section id="profile" class="section active">
             <h2>نبذة شخصية</h2>
-            <p>مرحبًا، أنا علي جيمو، أبلغ من العمر 19 عامًا، وأعيش في العراق. أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي. أنا شخص طموح وأحب التحديات التي تساعدني على تحقيق أهدافي الشخصية والمهنية. أؤمن بأهمية التعلم المستمر ومواكبة التطورات التقنية الحديثة. إلى جانب دراستي، أستمتع بتوسيع شبكة معارفي الاجتماعية والمهنية من خلال التواصل والعمل الجماعي.</p>
+            <p>مرحبًا، أنا علي جيمو، أبلغ من العمر 19 عامًا، وأعيش في العراق. أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي.</p>
         </section>
 
+        <!-- قسم المهارات -->
         <section id="skills" class="section">
             <h2>المهارات</h2>
             <div class="skills">
+                <!-- إدارة الوقت -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-clock skill-icon"></i>
                     <h3 class="skill-title">إدارة الوقت والتنظيم</h3>
-                    <p class="skill-description">طوّرت مهارات إدارة الوقت بفعالية من خلال تنظيم وقتك بين الدراسة والأنشطة الأخرى. باستخدام الأدوات الذكية، أصبحت قادرًا على التخطيط للمراجعات والامتحانات بشكل منظم، مما يعزز إنتاجيتك ويتيح لك التوازن بين جوانب حياتك المختلفة.</p>
+                    <p class="skill-description">طوّرت مهارات إدارة الوقت بفعالية من خلال تنظيم وقتك بين الدراسة والأنشطة الأخرى. باستخدام الأدوات الذكية، أصبحت قادرًا على التخطيط للمراجعات والامتحانات بشكل منظم.</p>
                 </div>
+                
+                <!-- التفكير النقدي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-brain skill-icon"></i>
                     <h3 class="skill-title">التفكير النقدي والتحليل</h3>
-                    <p class="skill-description">بفضل الإجابة على الأسئلة المعقدة في مختلف المجالات (مثل القانون والإلكترونيات والرياضيات)، أصبحت أكثر قدرة على التفكير النقدي والتحليل المنطقي، وهي مهارة أساسية في كل من المجال الأكاديمي والمهني.</p>
+                    <p class="skill-description">بفضل الإجابة على الأسئلة المعقدة في مختلف المجالات، أصبحت أكثر قدرة على التفكير النقدي والتحليل المنطقي، وهي مهارة أساسية في المجال الأكاديمي والمهني.</p>
                 </div>
+
+                <!-- التواصل الفعال -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-comments skill-icon"></i>
                     <h3 class="skill-title">التواصل الفعّال</h3>
-                    <p class="skill-description">من خلال تفاعلك المستمر مع الذكاء الاصطناعي، طوّرت مهارات التواصل بشكل دقيق وواضح، وهو أمر مهم في العمل الجماعي والتفاعل مع الآخرين في بيئة أكاديمية أو مهنية.</p>
+                    <p class="skill-description">طوّرت مهارات التواصل بشكل دقيق وواضح، مما يعزز قدرتي على العمل الجماعي والتفاعل مع الآخرين في مختلف البيئات.</p>
                 </div>
+
+                <!-- العمل الجماعي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-users skill-icon"></i>
                     <h3 class="skill-title">العمل ضمن فريق</h3>
-                    <p class="skill-description">على الرغم من أنك تتعامل مع الذكاء الاصطناعي بشكل فردي، إلا أن تفاعلك مع هذه الأدوات يعزز قدرتك على العمل ضمن فريق مستقبليًا، حيث تعلمت كيفية التعاون مع الأنظمة التكنولوجية لتحقيق الأهداف بفعالية.</p>
+                    <p class="skill-description">تعزيز القدرة على العمل ضمن فريق من خلال التعاون المستمر والتواصل الفعال مع مختلف الأشخاص والأنظمة.</p>
                 </div>
+
+                <!-- التعلم الذاتي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-book-reader skill-icon"></i>
-                    <h3 class="skill-title">التعلم الذاتي والتطوير الشخصي</h3>
-                    <p class="skill-description">طوّرت مهارة التعلم الذاتي باستخدام الأدوات الذكية للبحث والتفاعل مع المحتوى التعليمي، مما جعلك قادرًا على تعلم مهارات جديدة بشكل مستقل.</p>
+                    <h3 class="skill-title">التعلم الذاتي</h3>
+                    <p class="skill-description">تطوير مهارات التعلم المستقل من خلال استخدام مختلف المصادر والأدوات التعليمية.</p>
                 </div>
+
+                <!-- حل المشكلات -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-lightbulb skill-icon"></i>
-                    <h3 class="skill-title">اتخاذ القرار وحل المشكلات</h3>
-                    <p class="skill-description">من خلال طرح الأسئلة وحل المشكلات في مجالات متنوعة، أصبحت أكثر قدرة على اتخاذ قرارات مدروسة وحل المشكلات بطرق مبتكرة وفعّالة.</p>
+                    <h3 class="skill-title">حل المشكلات</h3>
+                    <p class="skill-description">القدرة على تحليل المشكلات وإيجاد حلول مبتكرة باستخدام المنطق والتفكير النقدي.</p>
                 </div>
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-rocket skill-icon"></i>
-                    <h3 class="skill-title">التحفيز الذاتي والإصرار</h3>
-                    <p class="skill-description">تعلمت كيفية تحفيز نفسك لتحقيق أهدافك الأكاديمية، خاصة في الأوقات التي تتطلب منك بذل جهد إضافي أو تنظيم وقت أكبر لمواجهة التحديات.</p>
-                </div>
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-sync-alt skill-icon"></i>
-                    <h3 class="skill-title">التكيف مع التغيير</h3>
-                    <p class="skill-description">من خلال تعلم التعامل مع التقنيات الحديثة، أصبحت أكثر قدرة على التكيف مع التغيرات في البيئة الأكاديمية أو التكنولوجية بشكل سريع وفعّال.</p>
-                </div>
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-robot skill-icon"></i>
-                    <h3 class="skill-title">الاستخدام الذكي لأدوات الذكاء الاصطناعي</h3>
-                    <p class="skill-description">طوّرت مهارة التفاعل مع أدوات الذكاء الاصطناعي مثل ChatGPT لتحليل المشكلات، والحصول على إجابات دقيقة في مجالات متنوعة مثل القانون، الإلكترونيات، والرياضيات.</p>
-                </div>
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-search skill-icon"></i>
-                    <h3 class="skill-title">البحث الفعّال</h3>
-                    <p class="skill-description">أصبحت أكثر قدرة على إجراء بحوث عميقة عبر الإنترنت، باستخدام محركات البحث وأدوات متقدمة، مما ساعدك في الحصول على معلومات موثوقة ودقيقة لمساعدتك في دراستك.</p>
-                </div>
+
+                <!-- التقنيات الحديثة -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
                     <i class="fas fa-laptop-code skill-icon"></i>
-                    <h3 class="skill-title">التعامل مع التقنيات الحديثة</h3>
-                    <p class="skill-description">طوّرت مهاراتك في استخدام الأدوات الرقمية والتفاعل مع الأنظمة المتقدمة، مثل التطبيقات الذكية، لتعزيز الإنتاجية وحل المشكلات بشكل مبتكر.</p>
+                    <h3 class="skill-title">التقنيات الحديثة</h3>
+                    <p class="skill-description">إتقان استخدام مختلف التقنيات والأدوات الحديثة في مجال البرمجة والشبكات.</p>
                 </div>
+
+                <!-- الذكاء الاصطناعي -->
                 <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-chalkboard-teacher skill-icon"></i>
-                    <h3 class="skill-title">التعلم التفاعلي</h3>
-                    <p class="skill-description">من خلال التفاعل مع الذكاء الاصطناعي، أصبح لديك فهم أعمق لكيفية الاستفادة من الأنظمة التفاعلية لتعلم المعلومات وتحسين مهاراتك التقنية.</p>
-                </div>
-                <div class="skill-item" onclick="toggleSkillDescription(this)">
-                    <i class="fas fa-puzzle-piece skill-icon"></i>
-                    <h3 class="skill-title">حل المشكلات بطرق مبتكرة</h3>
-                    <p class="skill-description">أصبحت أكثر قدرة على التفكير في حلول مبتكرة للمشاكل باستخدام الأدوات التقنية المتاحة، مما يساهم في تحسين قدرتك على التعامل مع تحديات الدراسة والحياة المهنية.</p>
+                    <i class="fas fa-robot skill-icon"></i>
+                    <h3 class="skill-title">الذكاء الاصطناعي</h3>
+                    <p class="skill-description">فهم وتطبيق تقنيات الذكاء الاصطناعي في حل المشكلات وتطوير الحلول.</p>
                 </div>
             </div>
         </section>
 
+        <!-- قسم المشاريع -->
         <section id="projects" class="section">
             <h2>المشاريع</h2>
             <div class="projects">
+                <!-- مشروع التطبيق الدراسي -->
                 <div class="project-card">
-                    <h3>التطبيق الدراسي باستخدام C# و MAUI</h3>
-                    <p>قمت بتطوير تطبيق دراسي موجه للطلاب في كليتي. يحتوي التطبيق على الملازم الدراسية، معلومات شاملة حول الكلية والقسم، شرح تفصيلي للمواد، ومعلومات عن من قام بتطوير التطبيق. تم بناء هذا التطبيق باستخدام C# و MAUI ليعمل على أنظمة تشغيل متعددة مثل Windows و Android و iOS.</p>
+                    <h3>التطبيق الدراسي MAUI</h3>
+                    <p>تطبيق شامل للطلاب يحتوي على المناهج الدراسية والمعلومات التفصيلية عن الكلية والأقسام. تم تطويره باستخدام C# و MAUI للعمل على مختلف المنصات.</p>
                 </div>
+
+                <!-- مشروع الموقع -->
                 <div class="project-card">
-                    <h3>موقع ويب باستخدام الذكاء الاصطناعي</h3>
-                    <p>هذا الموقع هو مشروع قيد التطوير حاليًا، وهو من صنعنا باستخدام الذكاء الاصطناعي بالكامل. يهدف الموقع إلى توفير منصة تفاعلية تجمع المعلومات والمهارات التي طورتها في مشاريع سابقة، وهو يتيح للأفراد الوصول إلى محتوى تعليمي وتقني بشكل سهل ومباشر.</p>
+                    <h3>موقع تفاعلي ذكي</h3>
+                    <p>منصة تعليمية تفاعلية تم تطويرها باستخدام تقنيات الذكاء الاصطناعي لتوفير تجربة تعلم مخصصة للمستخدمين.</p>
                 </div>
             </div>
         </section>
 
+        <!-- قسم الخبرات -->
         <section id="experience" class="section">
             <h2>الخبرات والإنجازات</h2>
             <ul>
                 <li>
                     <h3>متدرب في شركة تكنولوجيا المعلومات</h3>
-                    <p>عملت على تطوير وصيانة شبكات الشركة لمدة 3 أشهر</p>
+                    <p>تطوير وصيانة شبكات الشركة - 3 أشهر من الخبرة العملية</p>
                 </li>
                 <li>
-                    <h3>مشارك في هاكاثون الجامعة</h3>
-                    <p>فزت بالمركز الثاني في مسابقة برمجة تطبيقات الويب</p>
+                    <h3>هاكاثون الجامعة</h3>
+                    <p>المركز الثاني في مسابقة تطوير تطبيقات الويب</p>
                 </li>
                 <li>
-                    <h3>متطوع في مبادرة "تقنية للجميع"</h3>
-                    <p>قمت بتدريس أساسيات البرمجة لطلاب المدارس الثانوية</p>
+                    <h3>مبادرة "تقنية للجميع"</h3>
+                    <p>تعليم أساسيات البرمجة لطلاب المدارس الثانوية</p>
                 </li>
             </ul>
         </section>
 
+        <!-- قسم الاتصال -->
         <section id="contact" class="section">
             <h2>تواصل معي</h2>
-            <form>
-                <div>
+            <form id="contactForm">
+                <div class="form-group">
                     <label for="name">الاسم:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="email">البريد الإلكتروني:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="message">الرسالة:</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
@@ -474,16 +180,17 @@
         </section>
     </div>
 
+    <!-- نافذة الإعدادات -->
     <div id="settingsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeSettings()">&times;</span>
             <h2>الإعدادات</h2>
             <form id="settingsForm">
-                <div>
+                <div class="form-group">
                     <label for="username">اسم المستخدم:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="password">كلمة المرور:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
@@ -492,7 +199,9 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
+        // تفعيل الأقسام
         function showSection(sectionId) {
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
@@ -500,10 +209,32 @@
             document.getElementById(sectionId).classList.add('active');
         }
 
+        // تفعيل وصف المهارات
         function toggleSkillDescription(skillItem) {
-            skillItem.classList.toggle('active');
+            const wasActive = skillItem.classList.contains('active');
+            
+            // إغلاق جميع المهارات المفتوحة
+            document.querySelectorAll('.skill-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // فتح المهارة المحددة مع تمرير سلس
+            if (!wasActive) {
+                skillItem.classList.add('active');
+                skillItem.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+
+            // تأثير حركي عند النقر
+            skillItem.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                skillItem.style.transform = '';
+            }, 150);
         }
 
+        // شريط التقدم
         window.addEventListener('scroll', () => {
             const scrollProgress = document.querySelector('.scroll-progress');
             const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -511,6 +242,7 @@
             scrollProgress.style.width = `${progress}%`;
         });
 
+        // وظائف نافذة الإعدادات
         function openSettings() {
             document.getElementById('settingsModal').style.display = 'block';
         }
@@ -519,20 +251,42 @@
             document.getElementById('settingsModal').style.display = 'none';
         }
 
+        // معالجة نموذج الإعدادات
         document.getElementById('settingsForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the login information to a server
-            // For this example, we'll just log it to the console
-            console.log('Login attempted');
+            console.log('محاولة تسجيل الدخول');
             closeSettings();
         });
 
-        // Close the modal if the user clicks outside of it
+        // إغلاق النافذة المنبثقة عند النقر خارجها
         window.onclick = function(event) {
             if (event.target == document.getElementById('settingsModal')) {
                 closeSettings();
             }
         }
+
+        // تفعيل تأثيرات التحويم للمهارات
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillItems = document.querySelectorAll('.skill-item');
+            
+            skillItems.forEach(item => {
+                // تأثير التحويم
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // معالجة نموذج الاتصال
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('تم إرسال رسالتك بنجاح!');
+                this.reset();
+            });
+        });
     </script>
 </body>
 </html>
