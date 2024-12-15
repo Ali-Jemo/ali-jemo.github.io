@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>علي جيمو - السيرة الذاتية</title>
+    <title>علي حسين هادي - السيرة الذاتية</title>
     <!-- التنسيقات -->
     <link rel="stylesheet" href="style.css">
     <!-- مكتبة الأيقونات -->
@@ -25,9 +25,6 @@
             <li><a href="#" onclick="showSection('experience')">الخبرات</a></li>
             <li><a href="#" onclick="showSection('contact')">الاتصال</a></li>
         </ul>
-        <button class="settings-btn" onclick="openSettings()">
-            <i class="fas fa-cog"></i> الإعدادات
-        </button>
     </nav>
 
     <!-- رأس الصفحة -->
@@ -110,40 +107,109 @@
                 </div>
             </div>
         </section>
+            
+            <section id="projects" class="section">
+                <h2>المشاريع</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <h3>التطبيق الدراسي C# MAUI</h3>
+                        <p>تطبيق شامل للطلاب يحتوي على المناهج الدراسية والمعلومات التفصيلية عن الكلية والأقسام. يوفر واجهة سهلة الاستخدام وتجربة سلسة عبر مختلف الأجهزة.</p>
+                        <div class="project-details">
+                            <div class="tech-stack">
+                                <span class="tech-badge">C#</span>
+                                <span class="tech-badge">MAUI</span>
+                                <span class="tech-badge">SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>موقع تفاعلي ذكي</h3>
+                        <p>منصة تعليمية تفاعلية تم تطويرها باستخدام تقنيات الذكاء الاصطناعي. تقدم محتوى تعليمي مخصص وتتكيف مع احتياجات كل متعلم.</p>
+                        <div class="project-details">
+                            <div class="tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+            </section>
 
-        <!-- قسم المشاريع -->
-        <section id="projects" class="section">
-            <h2>المشاريع</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>التطبيق الدراسي C# MAUI</h3>
-                    <p>تطبيق شامل للطلاب يحتوي على المناهج الدراسية والمعلومات التفصيلية عن الكلية والأقسام.</p>
+       <!-- قسم الخبرات -->
+<section id="experience" class="section">
+    <h2>الخبرات والإنجازات</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024</div>
+            <div class="timeline-content">
+                <h3>متدرب في شركة تكنولوجيا المعلومات</h3>
+                <div class="timeline-info">
+                    <span class="duration">3 أشهر</span>
+                    <span class="location">الرياض، السعودية</span>
                 </div>
-                <div class="project-card">
-                    <h3>موقع تفاعلي ذكي</h3>
-                    <p>منصة تعليمية تفاعلية تم تطويرها باستخدام تقنيات الذكاء الاصطناعي.</p>
+                <p>تطوير وصيانة شبكات الشركة وتحقيق إنجازات متميزة:</p>
+                <ul class="achievements-list">
+                    <li>تحسين أداء الشبكة بنسبة 40%</li>
+                    <li>تطوير نظام مراقبة الشبكة في الوقت الفعلي</li>
+                    <li>المشاركة في تدريب 5 موظفين جدد</li>
+                </ul>
+                <div class="skills-used">
+                    <span class="skill-tag">إدارة الشبكات</span>
+                    <span class="skill-tag">تحليل الأداء</span>
+                    <span class="skill-tag">Cisco</span>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- قسم الخبرات -->
-        <section id="experience" class="section">
-            <h2>الخبرات والإنجازات</h2>
-            <ul>
-                <li>
-                    <h3>متدرب في شركة تكنولوجيا المعلومات</h3>
-                    <p>تطوير وصيانة شبكات الشركة - 3 أشهر من الخبرة العملية</p>
-                </li>
-                <li>
-                    <h3>هاكاثون الجامعة</h3>
-                    <p>المركز الثاني في مسابقة تطوير تطبيقات الويب</p>
-                </li>
-                <li>
-                    <h3>مبادرة "تقنية للجميع"</h3>
-                    <p>تعليم أساسيات البرمجة لطلاب المدارس الثانوية</p>
-                </li>
-            </ul>
-        </section>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+                <h3>هاكاثون الجامعة</h3>
+                <div class="timeline-info">
+                    <span class="award">المركز الثاني 🏆</span>
+                    <span class="event-type">مسابقة تطوير تطبيقات الويب</span>
+                </div>
+                <p>قيادة فريق من 4 أعضاء لتطوير تطبيق ويب مبتكر:</p>
+                <ul class="achievements-list">
+                    <li>تطوير حل مبتكر لمشكلة التعليم عن بعد</li>
+                    <li>عرض المشروع أمام لجنة من الخبراء</li>
+                    <li>تنفيذ المشروع خلال 48 ساعة</li>
+                </ul>
+                <div class="skills-used">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">العمل الجماعي</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+                <h3>مبادرة "تقنية للجميع"</h3>
+                <div class="timeline-info">
+                    <span class="role">منظم ومدرب</span>
+                    <span class="participants">50+ طالب</span>
+                </div>
+                <p>تنظيم وتقديم ورش عمل تعليمية في مجال البرمجة:</p>
+                <ul class="achievements-list">
+                    <li>تصميم وتقديم منهج تعليمي متكامل</li>
+                    <li>تنظيم 10 ورش عمل تفاعلية</li>
+                    <li>إلهام الطلاب لمتابعة مسار البرمجة</li>
+                </ul>
+                <div class="skills-used">
+                    <span class="skill-tag">التدريب</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">إدارة المشاريع</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- قسم الاتصال -->
         <section id="contact" class="section">
@@ -164,25 +230,6 @@
                 <button type="submit">إرسال</button>
             </form>
         </section>
-    </div>
-
-    <!-- نافذة الإعدادات -->
-    <div id="settingsModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeSettings()">&times;</span>
-            <h2>الإعدادات</h2>
-            <form id="settingsForm">
-                <div class="form-group">
-                    <label for="username">اسم المستخدم:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">كلمة المرور:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">تسجيل الدخول</button>
-            </form>
-        </div>
     </div>
 
     <!-- سكربت JavaScript -->
@@ -228,15 +275,7 @@
             scrollProgress.style.width = `${progress}%`;
         });
 
-        // نافذة الإعدادات
-        function openSettings() {
-            document.getElementById('settingsModal').style.display = 'block';
-        }
-
-        function closeSettings() {
-            document.getElementById('settingsModal').style.display = 'none';
-        }
-
+       
         // معالجة النماذج
         document.getElementById('settingsForm').addEventListener('submit', function(e) {
             e.preventDefault();

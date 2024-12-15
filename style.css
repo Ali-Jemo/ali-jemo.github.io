@@ -13,7 +13,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     font-family: 'Arial', sans-serif;
     transition: all 0.3s ease;
 }
@@ -255,6 +255,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin: 2rem 0;
 }
 
 .project-card {
@@ -262,13 +263,279 @@ header {
     border-radius: 15px;
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: var(--accent-color);
 }
 
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    border-radius: 4px 0 0 4px;
+}
+
+.project-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.project-details {
+    margin-top: auto;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.tech-badge {
+    background: rgba(99, 179, 237, 0.1);
+    color: var(--accent-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    border: 1px solid rgba(99, 179, 237, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.project-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(99, 179, 237, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .projects {
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+    }
+
+    .project-card {
+        padding: 1.2rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .project-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* قسم الخبرات والإنجازات - الخط الزمني */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    right: 30px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--accent-color) 5%,
+        var(--accent-color) 95%,
+        transparent
+    );
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-right: 60px;
+}
+
+.timeline-dot {
+    position: absolute;
+    right: 23px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    border: 3px solid var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+}
+
+.timeline-date {
+    position: absolute;
+    right: 60px;
+    top: -10px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.timeline-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.timeline-info span {
+    background: rgba(99, 179, 237, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.achievements-list {
+    list-style-type: none;
+    padding-right: 1.2rem;
+    margin: 1rem 0;
+}
+
+.achievements-list li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.achievements-list li::before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    right: -1.2rem;
+}
+
+.skills-used {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.skill-tag {
+    background: rgba(99, 179, 237, 0.1);
+    color: var(--accent-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(99, 179, 237, 0.2);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        right: 20px;
+    }
+    
+    .timeline-item {
+        padding-right: 45px;
+    }
+    
+    .timeline-dot {
+        right: 13px;
+    }
+    
+    .timeline-date {
+        right: 45px;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.8rem;
+    }
+    
+    .timeline-content {
+        padding: 1.2rem;
+    }
+    
+    .timeline-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .timeline-info span {
+        width: fit-content;
+    }
+}
 /* شريط التقدم */
 .scroll-progress {
     position: fixed;
@@ -281,40 +548,6 @@ header {
     transition: width 0.3s ease;
 }
 
-/* نافذة الإعدادات */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: var(--card-bg);
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid var(--border-color);
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-}
-
-.close {
-    color: #aaa;
-    float: left;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: var(--accent-color);
-}
 
 /* نموذج الاتصال */
 .form-group {
