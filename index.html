@@ -15,51 +15,75 @@
 
     <!-- القائمة العلوية -->
     <nav>
-        <button class="menu-btn" onclick="toggleMenu()">
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="القائمة">
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-links">
-            <li><a href="#" onclick="showSection('profile')">الملف الشخصي</a></li>
-            <li><a href="#" onclick="showSection('skills')">المهارات</a></li>
-            <li><a href="#" onclick="showSection('projects')">المشاريع</a></li>
-            <li><a href="#" onclick="showSection('experience')">الخبرات</a></li>
-            <li><a href="#" onclick="showSection('contact')">الاتصال</a></li>
+            <li><a href="#profile" onclick="showSection('profile')">الملف الشخصي</a></li>
+            <li><a href="#skills" onclick="showSection('skills')">المهارات</a></li>
+            <li><a href="#projects" onclick="showSection('projects')">المشاريع</a></li>
+            <li><a href="#experience" onclick="showSection('experience')">الخبرات</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">الاتصال</a></li>
         </ul>
     </nav>
 
-    <!-- رأس الصفحة -->
-    <header>
-        <img src="profile-img.jpg" alt="علي جيمو" class="profile-img">
-        <h1>علي جيمو</h1>
-        <p>طالب هندسة تقنيات الحاسوب | مطور شبكات واتصالات</p>
-        <div class="contact-info">
-            <a href="tel:07767986205" class="contact-item">
-                <i class="fas fa-phone"></i>
-                07767986205
-            </a>
-            <a href="https://www.facebook.com/ali.jemo.77" target="_blank" class="contact-item">
-                <i class="fab fa-facebook"></i>
-                فيسبوك
-            </a>
-            <a href="https://www.instagram.com/a.j1_6/" target="_blank" class="contact-item">
-                <i class="fab fa-instagram"></i>
-                إنستغرام
-            </a>
-            <a href="https://t.me/alijemo" target="_blank" class="contact-item">
-                <i class="fab fa-telegram"></i>
-                تلغرام
-            </a>
-        </div>
-    </header>
-
-    <!-- المحتوى الرئيسي -->
-    <div class="container">
+    <main class="container">
         <!-- قسم الملف الشخصي -->
         <section id="profile" class="section active">
-            <h2>نبذة شخصية</h2>
-            <p>مرحبًا، أنا علي جيمو، أبلغ من العمر 19 عامًا، وأعيش في العراق. أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي.</p>
-        </section>
+            <div class="main-profile">
+                <!-- معلومات الملف الشخصي -->
+                <div class="profile-card">
+                    <div class="profile-image-container">
+                        <img src="profile-img.jpg" alt="علي جيمو" class="profile-img">
+                        <div class="status-badge">متاح للعمل</div>
+                    </div>
+                    <div class="profile-info">
+                        <h1>علي جيمو</h1>
+                        <h2>طالب هندسة تقنيات الحاسوب | مطور شبكات واتصالات</h2>
+                        
+                        <!-- معلومات التواصل -->
+                        <div class="contact-info">
+                            <a href="tel:07767986205" class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                07767986205
+                            </a>
+                            <a href="https://www.facebook.com/ali.jemo.77" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <i class="fab fa-facebook"></i>
+                                فيسبوك
+                            </a>
+                            <a href="https://www.instagram.com/a.j1_6/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <i class="fab fa-instagram"></i>
+                                إنستغرام
+                            </a>
+                            <a href="https://t.me/alijemo" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <i class="fab fa-telegram"></i>
+                                تلغرام
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- النبذة الشخصية -->
+                <div class="bio-card">
+                    <h2>نبذة شخصية</h2>
+                    <p>مرحباً، أنا علي جيمو، أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي.</p>
+                    <div class="bio-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">19</span>
+                            <span class="stat-label">العمر</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">العراق</span>
+                            <span class="stat-label">الموقع</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">طالب جامعي</span>
+                            <span class="stat-label">المرحلة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- قسم المهارات -->
         <section id="skills" class="section">
             <h2>المهارات</h2>
@@ -185,6 +209,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+                <h3>مبادرة "تقنية للجميع"</h3>
+                <div class="timeline-info">
+                    <span class="role">منظم ومدرب</span>
+                    <span class="participants">50+ طالب</span>
+                </div>
+                <p>تنظيم وتقديم ورش عمل تعليمية في مجال البرمجة:</p>
+                <ul class="achievements-list">
+                    <li>تصميم وتقديم منهج تعليمي متكامل</li>
+                    <li>تنظيم 10 ورش عمل تفاعلية</li>
+                    <li>إلهام الطلاب لمتابعة مسار البرمجة</li>
+                </ul>
+                <div class="skills-used">
+                    <span class="skill-tag">التدريب</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">إدارة المشاريع</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
         <!-- قسم الاتصال -->
@@ -210,24 +258,22 @@
 
     <!-- سكربت JavaScript -->
     <script>
-        // تبديل الأقسام
-        function showSection(sectionId) {
+         // تبديل الأقسام
+         function showSection(sectionId) {
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
         }
 
-        // تبديل وصف المهارات
-        function toggleSkillDescription(skillItem) {
+       // تبديل وصف المهارات
+       function toggleSkillDescription(skillItem) {
             const wasActive = skillItem.classList.contains('active');
             
-            // إغلاق كل المهارات المفتوحة
             document.querySelectorAll('.skill-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // فتح المهارة المحددة مع تمرير سلس
             if (!wasActive) {
                 skillItem.classList.add('active');
                 skillItem.scrollIntoView({ 
@@ -237,8 +283,8 @@
             }
         }
 
-        // تبديل القائمة للموبايل
-        function toggleMenu() {
+         // تبديل القائمة للموبايل
+         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('show');
         }
@@ -250,14 +296,8 @@
             const progress = (window.pageYOffset / totalHeight) * 100;
             scrollProgress.style.width = `${progress}%`;
         });
-
        
-        // معالجة النماذج
-        document.getElementById('settingsForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            closeSettings();
-        });
-
+        // معالجة نموذج الاتصال
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('تم إرسال رسالتك بنجاح!');
@@ -282,13 +322,6 @@
                 document.querySelector('.nav-links').classList.remove('show');
             }
         });
-
-        // إغلاق النافذة المنبثقة عند النقر خارجها
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('settingsModal')) {
-                closeSettings();
-            }
-        }
     </script>
 </body>
 </html>
