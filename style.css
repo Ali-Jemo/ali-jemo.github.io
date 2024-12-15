@@ -372,6 +372,7 @@ nav {
 .timeline {
     position: relative;
     padding: 2rem 0;
+    margin-top: 2rem;
 }
 
 .timeline::before {
@@ -405,6 +406,12 @@ nav {
     background: var(--accent-color);
     border: 3px solid var(--card-bg);
     box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 5px rgba(99, 179, 237, 0.4);
 }
 
 .timeline-date {
@@ -417,12 +424,18 @@ nav {
     border-radius: 15px;
     font-weight: bold;
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-date {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-content {
     background: rgba(45, 55, 72, 0.7);
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 1.8rem;
     margin-top: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
@@ -449,23 +462,29 @@ nav {
 
 .timeline-info span {
     background: rgba(99, 179, 237, 0.1);
-    padding: 0.3rem 0.8rem;
+    padding: 0.5rem 1rem;
     border-radius: 12px;
     font-size: 0.9rem;
     color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.timeline-info span:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
 }
 
 .achievements-list {
     list-style-type: none;
     padding-right: 1.2rem;
-    margin: 1rem 0;
+    margin: 1.2rem 0;
 }
 
 .achievements-list li {
     position: relative;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     line-height: 1.6;
-    opacity: 0.9;
+    padding-right: 1rem;
 }
 
 .achievements-list li::before {
@@ -473,8 +492,31 @@ nav {
     color: var(--accent-color);
     position: absolute;
     right: -1.2rem;
+    font-size: 1.2rem;
 }
 
+.skills-used {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.skills-used .skill-tag {
+    background: rgba(99, 179, 237, 0.1);
+    color: var(--accent-color);
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(99, 179, 237, 0.2);
+    transition: all 0.3s ease;
+}
+
+.skills-used .skill-tag:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
 /* نموذج الاتصال */
 .form-group {
     margin-bottom: 1.5rem;
