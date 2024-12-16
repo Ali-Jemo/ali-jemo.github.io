@@ -31,54 +31,98 @@
         <!-- قسم الملف الشخصي -->
         <section id="profile" class="section active">
             <div class="main-profile">
-                <!-- معلومات الملف الشخصي -->
+                <!-- بطاقة الملف الشخصي الرئيسية -->
                 <div class="profile-card">
-                    <div class="profile-image-container">
-                        <img src="profile-img.jpg" alt="علي حسين هادي" class="profile-img">
-                        <div class="status-badge">متاح للعمل</div>
-                    </div>
-                    <div class="profile-info">
-                        <h1>علي حسين هادي</h1>
-                        <h2>طالب هندسة تقنيات الحاسوب | مطور شبكات واتصالات</h2>
-                        
-                        <!-- معلومات التواصل -->
-                        <div class="contact-info">
-                            <a href="tel:07767986205" class="contact-item">
-                                <i class="fas fa-phone"></i>
-                                07767986205
-                            </a>
-                            <a href="https://www.facebook.com/ali.jemo.77" target="_blank" rel="noopener noreferrer" class="contact-item">
-                                <i class="fab fa-facebook"></i>
-                                فيسبوك
-                            </a>
-                            <a href="https://www.instagram.com/a.j1_6/" target="_blank" rel="noopener noreferrer" class="contact-item">
-                                <i class="fab fa-instagram"></i>
-                                إنستغرام
-                            </a>
-                            <a href="https://t.me/alijemo" target="_blank" rel="noopener noreferrer" class="contact-item">
-                                <i class="fab fa-telegram"></i>
-                                تلغرام
-                            </a>
+                    <div class="profile-header">
+                        <div class="profile-image-container">
+                            <img src="profile-img.jpg" alt="علي جيمو" class="profile-img">
+                            <div class="status-badge">
+                                <span class="status-dot"></span>
+                                متاح للعمل
+                            </div>
                         </div>
+                        <div class="profile-info">
+                            <h1>علي حسين هادي</h1>
+                            <h2>طالب هندسة تقنيات الحاسوب | مطور شبكات واتصالات</h2>
+                            <div class="profile-tags">
+                                <span class="profile-tag">تطوير برمجيات</span>
+                                <span class="profile-tag">شبكات</span>
+                                <span class="profile-tag">اتصالات</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- معلومات التواصل -->
+                    <div class="contact-info">
+                        <a href="tel:07767986205" class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span class="contact-label">هاتف:</span>
+                            07767986205
+                        </a>
+                        <a href="https://www.facebook.com/ali.jemo.77" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <i class="fab fa-facebook"></i>
+                            <span class="contact-label">فيسبوك</span>
+                        </a>
+                        <a href="https://www.instagram.com/a.j1_6/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span class="contact-label">إنستغرام</span>
+                        </a>
+                        <a href="https://t.me/alijemo" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <i class="fab fa-telegram"></i>
+                            <span class="contact-label">تلغرام</span>
+                        </a>
                     </div>
                 </div>
-
-                <!-- النبذة الشخصية -->
-                <div class="bio-card">
-                    <h2>نبذة شخصية</h2>
-                    <p>مرحباً، أنا علي جيمو، أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي.</p>
-                    <div class="bio-stats">
-                        <div class="stat-item">
-                            <span class="stat-value">19</span>
-                            <span class="stat-label">العمر</span>
+        
+                <!-- النبذة الشخصية والإحصائيات -->
+                <div class="bio-section">
+                    <div class="bio-card">
+                        <h2>نبذة شخصية</h2>
+                        <p>مرحباً، أنا علي جيمو، أدرس في كلية الهندسة التقنية ضمن قسم هندسة تقنيات الحاسوب، فرع الشبكات والاتصالات. أتميز بشغفي الكبير بمجال التكنولوجيا والاتصالات وأسعى لتطوير مهاراتي باستمرار في هذا المجال الحيوي.</p>
+                        
+                        <div class="bio-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>طالب جامعي</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>العراق</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>19 سنة</span>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-value">العراق</span>
-                            <span class="stat-label">الموقع</span>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">2+</span>
+                                <span class="stat-label">مشاريع منجزة</span>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-value">طالب جامعي</span>
-                            <span class="stat-label">المرحلة</span>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">5+</span>
+                                <span class="stat-label">شهادات تقنية</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">2+</span>
+                                <span class="stat-label">سنوات خبرة</span>
+                            </div>
                         </div>
                     </div>
                 </div>
