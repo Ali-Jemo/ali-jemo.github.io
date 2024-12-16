@@ -120,10 +120,15 @@ nav {
     background: rgba(45, 55, 72, 0.7);
     border-radius: 20px;
     padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.profile-header {
     display: flex;
     gap: 2rem;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: flex-start;
     margin-bottom: 2rem;
 }
 
@@ -133,40 +138,159 @@ nav {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
     object-fit: cover;
     border: 4px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
 }
 
 .status-badge {
     position: absolute;
     bottom: -10px;
     right: -10px;
-    background: #48bb78;
+    background: rgba(72, 187, 120, 0.9);
     color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(5px);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .profile-info {
     flex: 1;
 }
 
-.profile-info h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+.profile-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
-.profile-info h2 {
-    font-size: 1.2rem;
+.profile-tag {
+    background: rgba(99, 179, 237, 0.1);
     color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    font-weight: normal;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(99, 179, 237, 0.3);
+    transition: all 0.3s ease;
 }
 
+.profile-tag:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
+}
+
+.bio-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+
+.bio-highlights {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(99, 179, 237, 0.1);
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-2px);
+}
+
+.highlight-item i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(45, 55, 72, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(99, 179, 237, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+}
 /* معلومات التواصل */
 .contact-info {
     display: flex;
@@ -195,54 +319,6 @@ nav {
     background: var(--accent-color);
 }
 
-/* البطاقة الشخصية */
-.bio-card {
-    background: rgba(45, 55, 72, 0.7);
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 2rem;
-}
-
-.bio-card h2 {
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-}
-
-.bio-card p {
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-.bio-stats {
-    display: flex;
-    gap: 2rem;
-    justify-content: flex-start;
-}
-
-.stat-item {
-    background: rgba(99, 179, 237, 0.1);
-    padding: 1.5rem;
-    border-radius: 15px;
-    min-width: 120px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stat-value {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-.stat-label {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
 
 /* قسم المهارات */
 .skills {
