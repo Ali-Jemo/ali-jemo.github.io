@@ -775,14 +775,14 @@ nav {
 /* تنسيقات قسم الاتصال */
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 2rem;
 }
 
 .contact-info-section {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
@@ -812,8 +812,10 @@ nav {
     font-size: 1.2rem;
 }
 
-.contact-card p {
+.contact-detail {
     color: rgba(255, 255, 255, 0.8);
+    direction: ltr;
+    text-align: center;
 }
 
 .contact-form {
@@ -850,7 +852,7 @@ nav {
 .input-with-icon input,
 .input-with-icon textarea {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem;
     padding-right: 3rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -860,9 +862,18 @@ nav {
     transition: all 0.3s ease;
 }
 
+.textarea-container {
+    align-items: flex-start;
+}
+
+.textarea-container i {
+    top: 1rem;
+}
+
 .input-with-icon textarea {
     height: 150px;
     resize: vertical;
+    padding-top: 1rem;
 }
 
 .input-with-icon input:focus,
@@ -894,10 +905,16 @@ nav {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.submit-btn i {
-    font-size: 1.2rem;
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
-/* رسائل التنبيه */
+
+.alert-container {
+    margin-bottom: 1.5rem;
+}
+
 .alert {
     padding: 1rem;
     border-radius: 12px;
@@ -917,6 +934,22 @@ nav {
     background: rgba(245, 101, 101, 0.2);
     color: #f56565;
     border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+/* التجاوب مع الشاشات */
+@media (max-width: 768px) {
+    .contact-info-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .input-with-icon input,
+    .input-with-icon textarea {
+        font-size: 16px; /* لتجنب التكبير التلقائي في iOS */
+    }
 }
 
 /* التجاوب مع الشاشات */
