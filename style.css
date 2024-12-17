@@ -26,16 +26,78 @@ body {
     min-height: 100vh;
 }
 
-/* شريط التقدم */
+/* شريط التقدم المطور */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
     width: 0;
     height: 4px;
-    background-color: var(--accent-color);
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%,
+        #4299e1 50%,
+        var(--accent-color) 100%
+    );
     z-index: 1001;
-    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 2px 2px 0;
+}
+
+/* تأثير التوهج */
+.scroll-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+/* حركة التوهج */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* تأثير النبض عند التمرير السريع */
+.scroll-progress.fast-scroll {
+    height: 5px;
+    transition: all 0.2s ease;
+    animation: pulse 0.5s ease infinite;
+}
+
+/* حركة النبض */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* تحسين الأداء */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress {
+        transition: none;
+    }
+    .scroll-progress::after {
+        animation: none;
+    }
+    .scroll-progress.fast-scroll {
+        animation: none;
+    }
 }
 
 /* شريط القائمة */
@@ -115,41 +177,78 @@ nav {
     }
 }
 
+/* تنسيقات قسم الملف الشخصي المطور */
+
 /* بطاقة الملف الشخصي */
 .profile-card {
     background: rgba(45, 55, 72, 0.7);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .profile-header {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: flex-start;
-    margin-bottom: 2rem;
 }
 
+/* صورة الملف الشخصي */
 .profile-image-container {
     position: relative;
     flex-shrink: 0;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
     object-fit: cover;
     border: 4px solid var(--accent-color);
-    transition: transform 0.3s ease;
+    transition: all 0.5s ease;
+    filter: brightness(0.9);
 }
 
-.profile-img:hover {
-    transform: scale(1.05);
+.profile-image-container:hover .profile-img {
+    transform: translateZ(20px);
+    filter: brightness(1);
 }
 
+.profile-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image-container:hover .profile-image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.profile-image-container:hover .overlay-content {
+    transform: translateY(0);
+}
+
+/* شارة الحالة */
 .status-badge {
     position: absolute;
     bottom: -10px;
@@ -163,6 +262,8 @@ nav {
     align-items: center;
     gap: 0.5rem;
     backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: badgePulse 2s infinite;
 }
 
 .status-dot {
@@ -170,78 +271,254 @@ nav {
     height: 8px;
     background: #fff;
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: dotPulse 2s infinite;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
+@keyframes badgePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.profile-info {
-    flex: 1;
+@keyframes dotPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
+/* معلومات الملف الشخصي */
+.name-section {
+    margin-bottom: 1rem;
+}
+
+.typing-effect {
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.typing-text {
+    position: relative;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.typing-text::after {
+    content: '|';
+    position: absolute;
+    right: -4px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* التاجات */
 .profile-tags {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .profile-tag {
     background: rgba(99, 179, 237, 0.1);
     color: var(--accent-color);
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 12px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     border: 1px solid rgba(99, 179, 237, 0.3);
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .profile-tag:hover {
     background: rgba(99, 179, 237, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.bio-section {
+/* معلومات التواصل */
+.contact-info {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-
-.bio-highlights {
-    display: flex;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
     margin-top: 2rem;
-    flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.highlight-item {
+.contact-item {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     background: rgba(99, 179, 237, 0.1);
-    padding: 0.8rem 1.2rem;
+    padding: 1rem;
     border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.contact-item:hover {
+    background: rgba(99, 179, 237, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(99, 179, 237, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--accent-color);
     transition: all 0.3s ease;
 }
 
-.highlight-item:hover {
-    background: rgba(99, 179, 237, 0.2);
-    transform: translateY(-2px);
+.contact-item:hover .contact-icon {
+    transform: rotate(360deg);
 }
 
-.highlight-item i {
+.contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.contact-value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* النبذة الشخصية */
+/* تتمة تنسيقات النبذة الشخصية */
+.bio-card {
+    background: rgba(45, 55, 72, 0.7);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.bio-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.bio-header i {
+    font-size: 2rem;
     color: var(--accent-color);
-    font-size: 1.2rem;
+    opacity: 0.7;
 }
 
+.bio-text {
+    line-height: 1.8;
+    text-align: justify;
+    position: relative;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+}
+
+.bio-text::before,
+.bio-text::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.bio-text::before {
+    right: -1rem;
+    top: -1rem;
+}
+
+.bio-text::after {
+    left: -1rem;
+    bottom: -1rem;
+}
+
+/* الإحصائيات والمميزات */
+.bio-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.highlight-item {
+    background: rgba(99, 179, 237, 0.1);
+    padding: 1.2rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    background: rgba(99, 179, 237, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(99, 179, 237, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover .highlight-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.highlight-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.2rem;
+}
+
+.highlight-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* شبكة الإحصائيات */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -252,74 +529,120 @@ nav {
     padding: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.stat-card:hover::before {
+    transform: translateX(100%);
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .stat-icon {
     width: 50px;
     height: 50px;
+    background: rgba(99, 179, 237, 0.15);
     border-radius: 12px;
-    background: rgba(99, 179, 237, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1) rotate(10deg);
 }
 
 .stat-info {
     flex: 1;
 }
 
-.stat-value {
-    display: block;
-    font-size: 1.5rem;
+.stat-counter {
+    font-size: 2rem;
     font-weight: bold;
     color: var(--accent-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    display: block;
     font-size: 0.9rem;
     opacity: 0.8;
-    margin-top: 0.3rem;
-}
-/* معلومات التواصل */
-.contact-info {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
 }
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
-    background: rgba(99, 179, 237, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
-    min-width: 140px;
-    justify-content: center;
+/* التجاوب مع الشاشات */
+@media (max-width: 992px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-tags {
+        justify-content: center;
+    }
+
+    .bio-highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.contact-item:hover {
-    transform: translateY(-2px);
-    background: var(--accent-color);
+@media (max-width: 768px) {
+    .bio-highlights,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* تحريك العداد */
+@keyframes countUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
+.stat-counter {
+    animation: countUp 1s ease forwards;
+}
 /* قسم المهارات */
 .skills {
     display: grid;
